@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!--Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Piedra' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Teko' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bentham' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Economica' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=BenchNine' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Tenali Ramakrishna' rel='stylesheet'>
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <style>
+        a:hover {
+          color: #ffa500 !important;
+        }
+
+        /*
+    code by Iatek LLC 2018 - CC 2.0 License - Attribution required
+    code customized by Azmind.com
+*/
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Show 4th slide on md if col-md-4*/
+    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+    /* Show 3rd slide on sm if col-sm-6*/
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) {
+    .carousel-item {
+        margin-right: 0;
+    }
+    /* show 2 items */
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be also positioned for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* MD */
+@media (min-width: 768px) {
+    /* show 3rd of 3 item slide */
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* LG */
+@media (min-width: 991px) {
+    /* show 4th item */
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    /* Show 5th slide on lg if col-lg-3 */
+    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@keyframes current_page {
+          0%   {background-color: #ffa500; left:0px; top:0px;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{% url 'appBlogd:index' %}" style="margin-left: 30px; margin-right: 50px; Font-family: piedra; font-size: 50px;">Blog-Site</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" style="padding-left: 30px;">
+            <a class="nav-link" href="{% url 'appBlogd:index' %}" style="font-family: satisfy; font-size: 25px;">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown" style="padding-left: 30px;">
+            <a class="nav-link dropdown-toggle" style="font-family: satisfy; font-size: 25px;" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Category
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'appBlogd:catBusiness' %}" style="Font-family: Economica; font-size: 20px;">Business Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catCars' %}" style="Font-family: Economica; font-size: 20px;">Car Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catCelebrity' %}" style="Font-family: Economica; font-size: 20px;">Celebrity Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catHistory' %}" style="Font-family: Economica; font-size: 20px;">History Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catLifestyle' %}" style="Font-family: Economica; font-size: 20px;">Lifestyle Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catPolitics' %}" style="Font-family: Economica; font-size: 20px;">Politics Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catSports' %}" style="Font-family: Economica; font-size: 20px;">Sports Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catTechnology' %}" style="Font-family: Economica; font-size: 20px;">Technology Posts</a>
+            </div>
+          </li>
+          <li class="nav-item" style="padding-left: 30px; font-family: satisfy; font-size: 25px;">
+            <a class="nav-link" href="#">Gallery</a>
+          </li>
+          <li class="nav-item" style="padding-left: 30px; font-family: satisfy; font-size: 25px;">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        <span class="navbar-text" style="margin-left: 30px; margin-right: 30px;">
+            <a href="#">
+                <i class="fab fa-facebook-f" style="margin-right: 30px;"></i>
+            </a>
+            <b>
+            <a href="#">
+                <i class="fab fa-twitter" style="margin-right: 30px;"></i>
+            </a>
+            </b>
+            <a href="#">
+                <i class="fab fa-instagram" style="margin-right: 30px;"></i>
+            </a>
+            </b>
+            <a href="#">
+                <i class="fab fa-whatsapp" style="margin-right: 30px;"></i>
+            </a>
+            </b>
+            <a href="#" target="_blank">
+                <i class="fas fa-envelope-open-text"></i>
+            </a>
+        </span>
+      </div>
+    </nav>
+{% block index %}{% endblock %}
+    <div class="container-fluid" style="margin-top: 50px; padding: 30px;">
+        <div class="row">
+            <div class="col-sm-8" style="border-color: #ffa500;">
+                {% block pane %}{% endblock %}
+            </div>
+            <div class="col-sm-4" style="Font-size: 25px;">
+                <div class="alert alert-warning" role="alert">
+                    <form class="form-inline" style="width: 100%;">
+                      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="alert alert-warning" role="alert" style="">
+                  <h4 class="alert-heading" style="font-family: BenchNine;">Category</h4><hr>
+                  <p style="Font-family: Tenali Ramakrishna;">Choose category of posts to view.</p>
+                  <ul style="list-style-type: none; Font-family: Tenali Ramakrishna;">
+                      <li><a href="{% url 'appBlogd:catBusiness' %}">Business</a></li>
+                      <li><a href="{% url 'appBlogd:catCars' %}">Cars</a></li>
+                      <li><a href="{% url 'appBlogd:catCelebrity' %}">Celebrity</a></li>
+                      <li><a href="{% url 'appBlogd:catHistory' %}">History</a></li>
+                      <li><a href="{% url 'appBlogd:catLifestyle' %}">Lifestyle</a></li>
+                      <li><a href="{% url 'appBlogd:catPolitics' %}">Politics</a></li>
+                      <li><a href="{% url 'appBlogd:catSports' %}">Sports</a></li>
+                      <li><a href="{% url 'appBlogd:catTechnology' %}">Technology</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="text-align: center; padding: 30px;">
+    <!--<div class="row" style="display: inline-block;">
+        <h4 style="color: #800000; Font-family: Permanent Marker;">RADICAL GROUP</h4>
+        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The Unsurpassed Plan Merchandising<br> Company. <b>We Love What We Do</b>.</i> </h4>
+        <a href="#" class="btn btn-info" style="color: #800000; Font-family: Oswald;">SUBSCRIBE FOR NEWSLETTER RECEPTION</a>
+    </div>-->
+</div>
+<div class="container-fluid bg-light" style="padding: 50px;">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul>
+                <h5 style="Font-family: Changa;">About Us</h5>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul style="list-style-type: none;">
+                <h5 style="Font-family: Changa;">Navigator</h5>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-home"></i>
+                    <a href="#">Home</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-info-circle"></i>
+                    <a href="#">About</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-newspaper"></i>
+                    <a href="#">News</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-users"></i>
+                    <a href="#">Team</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-scroll"></i>
+                    <a href="#">Plans</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul>
+                <h5 style="Font-family: Changa;">Contact Us</h5>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul style="list-style-type: none;">
+                <h5 style="Font-family: Changa;">Follow Us</h5>
+                <li style="Font-family: Oswald;">
+                    <i class="fab fa-facebook-f"></i>
+                    <a href="#">Facebook</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fab fa-twitter"></i>
+                    <a href="#">Twitter</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fab fa-youtube"></i>
+                    <a href="#">YouTube</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" style="text-align:center;">
+            <img class="rounded-circle mx-auto img-fluid" src="https://sigtunafoundation.pythonanywhere.com/media/loadNutlogo.png" style="max-width: 5%;">
+            <h6 style="Font-family: Oswald;"><a href="https://onyangoabila.pythonanywhere.com">loadNut Studio Community | Developers Section</a></h6>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <a href="#modalCrown" data-toggle="modal">
+                <i class="fas fa-medal"></i>
+            </a>
+        </div>
+        <div class="col-sm-8" style="display: inline-block; text-align: center;">
+            <a class="w3-large center" href="mailto:loadnut7@gmail.com" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-google-plus" style="padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://www.youtube.com/channel/UCTSCmMp82VkZhy8C8H-jpyg" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-youtube" style="padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://www.facebook.com/andrew.abila.5" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-facebook" style="padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://ke.linkedin.com/in/andrew-abila-274330184" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-linkedin" style="padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://github.com/PhettyAndrew" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-github" style="padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="#" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-twitter" style="padding: 5px;"></i>
+            </a>
+            <a class="w3-large" href="#" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-skype" style="padding: 5px;"></i>
+            </a>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+<div class="modal fade modalHistory" id="modalCrown" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="header">
+          <img src="https://sigtunafoundation.pythonanywhere.com/media/loadNutlogo.png" style="max-width: 20%;">
+      </div>
+      <div class="modal-body">
+        <p style="Font-family: Lemonada;">None of this would be possible without the grace and
+            blessing of our Lord Jesus Christ to whom be all praise and glory!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+ // When the user scrolls down 20px from the top of the document, slide down the navbar
+// When the user scrolls to the top of the page, slide up the navbar (50px out of the top view)
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+}
+
+
+/*
+    Carousel
+*/
+$('#carousel-example').on('slide.bs.carousel', function (e) {
+    /*
+        CC 2.0 License Iatek LLC 2018 - Attribution required
+    */
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 5;
+    var totalItems = $('.carousel-item').length;
+
+    if (idx >= totalItems-(itemsPerSlide-1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i=0; i<it; i++) {
+            // append slides to end
+            if (e.direction=="left") {
+                $('.carousel-item').eq(i).appendTo('.carousel-inner');
+            }
+            else {
+                $('.carousel-item').eq(0).appendTo('.carousel-inner');
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>

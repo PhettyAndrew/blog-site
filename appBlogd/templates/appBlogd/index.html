@@ -1,0 +1,99 @@
+{% extends 'appBlogd/base.html' %}
+{% block title %}Blog-Site{% endblock %}
+{% block index %}
+<!-- Top content -->
+<div class="top-content">
+    <div class="container-fluid">
+        <div id="carousel-example" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                {% for infoImage in infoImage %}
+                <div class="carousel-item text-center text-light col-12 col-sm-6 col-md-4 col-lg-3 {% if forloop.first %} active{% endif %}">
+                    <a href="#">
+                        <img data-toggle="tooltip" title="{{infoImage.title}} | {{infoImage.description}}" src="{{infoImage.image.url}}" style="width: 100%; height: 575px;" class="img-fluid mx-auto d-block" alt="img1">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block pane %}
+<div class="row">
+    <div class="alert" role="alert" style="width: 100%;">
+      <h4 class="alert-heading" style="font-family: BenchNine;">Text Posts</h4><hr>
+    </div>
+</div>
+<div class="row">
+    {% for infoImage in infoImage %}
+    <div class="col-sm-4">
+        <div class="card border-0" style="width: 18rem;">
+          <img src="{{infoImage.image.url}}" class="card-img-top" style="width: 100%; height: 300px;" alt="...">
+          <div class="card-body">
+            <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoImage.category}}</h4>
+            <h5 class="card-text" style="Font-family: Bentham;">{{infoImage.title}}</h5>
+            <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoImage.date}}</p>
+            <a href="{% url 'appBlogd:view_post' infoImage.id %}" class="btn btn-success">
+                <i class="fas fa-folder-open">View Post</i>
+            </a>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="alert" role="alert" style="width: 100%;">
+      <h4 class="alert-heading" style="font-family: BenchNine;">Video Posts</h4><hr>
+    </div>
+</div>
+<div class="row">
+    {% for infoVideo in infoVideo %}
+    <div class="col-sm-4">
+        <div class="card border-0" style="width: 18rem;">
+            <video width="100%" height="200" controls>
+                <source src="http://127.0.0.1:8000/media/Tubidy.ioJESUS_TODO_LO_PAGO_-_Fountainview_Academy.mp4" type="video/mp4">
+            </video>
+          <div class="card-body">
+            <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoVideo.category}}</h4>
+            <h5 class="card-text" style="Font-family: Bentham;">{{infoVideo.title}}</h5>
+            <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoVideo.date}}</p>
+            <a href="#" class="btn btn-success">
+                <i class="fas fa-folder-open">View Post</i>
+            </a>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="alert" role="alert" style="width: 100%;">
+      <h4 class="alert-heading" style="font-family: BenchNine;">YouTube Posts</h4><hr>
+    </div>
+</div>
+<div class="row">
+    {% for infoYoutube in infoYoutube %}
+    <div class="col-sm-4">
+        <div class="card border-0" style="width: 18rem;">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/{{infoYoutube.url}}">
+            </iframe>
+          <div class="card-body">
+            <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoYoutube.category}}</h4>
+            <h5 class="card-text" style="Font-family: Bentham;">{{infoYoutube.title}}</h5>
+            <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoYoutube.date}}</p>
+            <a href="#" class="btn btn-success">
+                <i class="fas fa-folder-open">View Post</i>
+            </a>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
