@@ -26,4 +26,7 @@ urlpatterns = [
 
     # View Image Post Url
     path('view-video-post/code:<int:view_id>', views.viewVideo_post, name='viewVideo_post'),
+
+    # View Youtube Post Url
+    path('view-youtube-post/code:<int:view_id>', views.viewYoutube_post, name='viewYoutube_post'),
 ]

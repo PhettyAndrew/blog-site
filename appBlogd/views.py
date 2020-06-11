@@ -180,3 +180,12 @@ def viewVideo_post(request, view_id):
         'result': result,
     }
     return render(request, 'appBlogd/viewVideo_post.html', context)
+
+
+# View Video Post Function
+def viewYoutube_post(request, view_id):
+    result = get_object_or_404(YoutubePost, pk=view_id)
+    context = {
+        'result': result,
+    }
+    return render(request, 'appBlogd/viewYoutube_post.html', context)

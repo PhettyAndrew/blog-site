@@ -90,7 +90,7 @@
             <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoYoutube.category}}</h4>
             <h5 class="card-text" style="Font-family: Bentham;">{{infoYoutube.title}}</h5>
             <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoYoutube.date}}</p>
-            <a href="#" class="btn btn-success">
+            <a href="{% url 'appBlogd:viewYoutube_post' infoYoutube.id %}" class="btn btn-success">
                 <i class="fas fa-folder-open">View Post</i>
             </a>
           </div>
