@@ -2,16 +2,29 @@ from django.shortcuts import render, get_object_or_404
 from .models import ImagePost, VideoPost, YoutubePost
 from django.db.models import DateTimeField
 from django.db.models.functions import Trunc
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
 # Text Posts
 def index(request):
+    infoCarousel = ImagePost.objects.order_by('date')
     infoImage = ImagePost.objects.order_by('date')
     infoVideo = VideoPost.objects.all
     infoYoutube = YoutubePost.objects.all
+    paginator = Paginator(infoImage, 6)
+    page = request.GET.get('page', 1)
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     context = {
-        'infoImage': infoImage,
+        'infoCarousel':infoCarousel,
+        'posts': posts,
         'infoVideo': infoVideo,
         'infoYoutube': infoYoutube,
 

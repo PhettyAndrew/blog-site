@@ -14,12 +14,12 @@
 {% block pane %}
 <div class="row">
     <div class="col-sm-8">
-        <img src="{{result.image.url}}" class="card-img-top" style="width: 100%; height: 300px;" alt="...">
+        <img src="{{result.image.url}}" class="card-img-top" style="width: 100%; height: 350px;" alt="...">
     </div>
-    <div class="col-sm-4" style="text-align: right;">
+    <div class="col-sm-4" style="text-align: left;">
         <div style="display: inline-block;">
-            <h4 style="color: #ffa500; Font-family: Teko;">{{result.title}}</h4>
-            <h5 style="Font-family: Bentham;">{{result.category}}</h5>
+            <h4 style="color: #ffa500; Font-family: Teko;">Title: {{result.title}}</h4>
+            <h5 style="Font-family: Bentham;">Category: {{result.category}}</h5>
             <p style="Font-family: Tenali Ramakrishna;">Posted On {{result.date}}</p>
         </div>
     </div>
