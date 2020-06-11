@@ -9,16 +9,20 @@ category = (
     ('Cars', 'cars'),
     ('Celebrity', 'celebrity'),
     ('History', 'history'),
+    ('Matatu Culture', 'matatu culture'),
+    ('Memes and Vines', 'memes and vines'),
+    ('Music and Series Review', 'music and series review'),
     ('Politics', 'politics'),
     ('Sports', 'sports'),
     ('Technology', 'technology'),
+    ('Youths Corner', 'youths corner'),
 )
 
 
 # Post Table
 class ImagePost(models.Model):
     image = models.ImageField()
-    category = models.CharField(choices=category, default='unknown', max_length=20)
+    category = models.CharField(choices=category, default='unknown', max_length=100)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     author = models.CharField(max_length=40)
@@ -32,7 +36,7 @@ class ImagePost(models.Model):
 # Video Table
 class VideoPost(models.Model):
     video = models.FileField()
-    category = models.CharField(choices=category, default='unknown', max_length=20)
+    category = models.CharField(choices=category, default='unknown', max_length=100)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     author = models.CharField(max_length=40)
@@ -46,7 +50,7 @@ class VideoPost(models.Model):
 # Youtube Videos Table
 class YoutubePost(models.Model):
     url = models.CharField(max_length=20)
-    category = models.CharField(choices=category, default='unknown', max_length=20)
+    category = models.CharField(choices=category, default='unknown', max_length=100)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     author = models.CharField(max_length=40)

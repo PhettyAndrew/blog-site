@@ -20,6 +20,7 @@
     <link href='https://fonts.googleapis.com/css?family=Economica' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=BenchNine' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Tenali Ramakrishna' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet'>
 
     <title>{% block title %}{% endblock %}</title>
 
@@ -166,6 +167,8 @@
     </style>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="w72cud1o"></script>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="{% url 'appBlogd:index' %}" style="margin-left: 30px; margin-right: 50px; Font-family: piedra; font-size: 50px;">Blog-Site</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -181,14 +184,18 @@
               Category
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{% url 'appBlogd:catBusiness' %}" style="Font-family: Economica; font-size: 20px;">Business Posts</a>
-              <a class="dropdown-item" href="{% url 'appBlogd:catCars' %}" style="Font-family: Economica; font-size: 20px;">Car Posts</a>
-              <a class="dropdown-item" href="{% url 'appBlogd:catCelebrity' %}" style="Font-family: Economica; font-size: 20px;">Celebrity Posts</a>
-              <a class="dropdown-item" href="{% url 'appBlogd:catHistory' %}" style="Font-family: Economica; font-size: 20px;">History Posts</a>
-              <a class="dropdown-item" href="{% url 'appBlogd:catLifestyle' %}" style="Font-family: Economica; font-size: 20px;">Lifestyle Posts</a>
-              <a class="dropdown-item" href="{% url 'appBlogd:catPolitics' %}" style="Font-family: Economica; font-size: 20px;">Politics Posts</a>
-              <a class="dropdown-item" href="{% url 'appBlogd:catSports' %}" style="Font-family: Economica; font-size: 20px;">Sports Posts</a>
-              <a class="dropdown-item" href="{% url 'appBlogd:catTechnology' %}" style="Font-family: Economica; font-size: 20px;">Technology Posts</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catBusiness' %}" style="Font-family: Economica; font-size: 20px;">Business</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catCars' %}" style="Font-family: Economica; font-size: 20px;">Cars</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catCelebrity' %}" style="Font-family: Economica; font-size: 20px;">Celebrities</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catHistory' %}" style="Font-family: Economica; font-size: 20px;">History</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catLifestyle' %}" style="Font-family: Economica; font-size: 20px;">Lifestyle</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catMatatu' %}" style="Font-family: Economica; font-size: 20px;">Matatu Culture</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catMemes' %}" style="Font-family: Economica; font-size: 20px;">Memes and Vines</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catReviews' %}" style="Font-family: Economica; font-size: 20px;">Music and Series Review</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catPolitics' %}" style="Font-family: Economica; font-size: 20px;">Politics</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catSports' %}" style="Font-family: Economica; font-size: 20px;">Sports</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catTechnology' %}" style="Font-family: Economica; font-size: 20px;">Technology</a>
+              <a class="dropdown-item" href="{% url 'appBlogd:catYouths' %}" style="Font-family: Economica; font-size: 20px;">Youths' Corner</a>
             </div>
           </li>
           <li class="nav-item" style="padding-left: 30px; font-family: satisfy; font-size: 25px;">
@@ -243,9 +250,13 @@
                       <li><a href="{% url 'appBlogd:catCelebrity' %}">Celebrity</a></li>
                       <li><a href="{% url 'appBlogd:catHistory' %}">History</a></li>
                       <li><a href="{% url 'appBlogd:catLifestyle' %}">Lifestyle</a></li>
+                      <li><a href="{% url 'appBlogd:catMatatu' %}">Matatu Culture</a></li>
+                      <li><a href="{% url 'appBlogd:catMemes' %}">Memes and Vines</a></li>
+                      <li><a href="{% url 'appBlogd:catReviews' %}">Music and Series Review</a></li>
                       <li><a href="{% url 'appBlogd:catPolitics' %}">Politics</a></li>
                       <li><a href="{% url 'appBlogd:catSports' %}">Sports</a></li>
                       <li><a href="{% url 'appBlogd:catTechnology' %}">Technology</a></li>
+                      <li><a href="{% url 'appBlogd:catYouths' %}">Youths' Corner</a></li>
                   </ul>
                 </div>
             </div>

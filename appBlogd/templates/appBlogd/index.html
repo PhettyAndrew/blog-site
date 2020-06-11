@@ -1,5 +1,5 @@
 {% extends 'appBlogd/base.html' %}
-{% block title %}Blog-Site{% endblock %}
+{% block title %}Blog-Site : Home{% endblock %}
 {% block index %}
 <!-- Top content -->
 <div class="top-content">
@@ -8,7 +8,7 @@
             <div class="carousel-inner row w-100 mx-auto" role="listbox">
                 {% for infoImage in infoImage %}
                 <div class="carousel-item text-center text-light col-12 col-sm-6 col-md-4 col-lg-3 {% if forloop.first %} active{% endif %}">
-                    <a href="#">
+                    <a href="{% url 'appBlogd:viewImage_post' infoImage.id %}">
                         <img data-toggle="tooltip" title="{{infoImage.title}} | {{infoImage.description}}" src="{{infoImage.image.url}}" style="width: 100%; height: 575px;" class="img-fluid mx-auto d-block" alt="img1">
                     </a>
                 </div>
@@ -36,12 +36,14 @@
     {% for infoImage in infoImage %}
     <div class="col-sm-4">
         <div class="card border-0" style="width: 18rem;">
-          <img src="{{infoImage.image.url}}" class="card-img-top" style="width: 100%; height: 300px;" alt="...">
+            <a href="{% url 'appBlogd:viewImage_post' infoImage.id %}">
+                <img src="{{infoImage.image.url}}" class="card-img-top" style="width: 100%; height: 300px;" alt="...">
+            </a>
           <div class="card-body">
-            <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoImage.category}}</h4>
-            <h5 class="card-text" style="Font-family: Bentham;">{{infoImage.title}}</h5>
+            <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoImage.title}}</h4>
+            <h5 class="card-text" style="Font-family: Bentham;">{{infoImage.category}}</h5>
             <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoImage.date}}</p>
-            <a href="{% url 'appBlogd:view_post' infoImage.id %}" class="btn btn-success">
+            <a href="{% url 'appBlogd:viewImage_post' infoImage.id %}" class="btn btn-success">
                 <i class="fas fa-folder-open">View Post</i>
             </a>
           </div>
@@ -59,13 +61,13 @@
     <div class="col-sm-4">
         <div class="card border-0" style="width: 18rem;">
             <video width="100%" height="200" controls>
-                <source src="http://127.0.0.1:8000/media/Tubidy.ioJESUS_TODO_LO_PAGO_-_Fountainview_Academy.mp4" type="video/mp4">
+                <source src="{{infoVideo.video.url}}" type="video/mp4">
             </video>
           <div class="card-body">
             <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoVideo.category}}</h4>
             <h5 class="card-text" style="Font-family: Bentham;">{{infoVideo.title}}</h5>
             <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoVideo.date}}</p>
-            <a href="#" class="btn btn-success">
+            <a href="{% url 'appBlogd:viewVideo_post' infoVideo.id %}" class="btn btn-success">
                 <i class="fas fa-folder-open">View Post</i>
             </a>
           </div>

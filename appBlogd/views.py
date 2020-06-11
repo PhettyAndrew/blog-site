@@ -80,6 +80,42 @@ def categoryLifestyle(request):
     return render(request, 'appBlogd/category.html', context)
 
 
+def categoryMatatu(request):
+    infoImage = ImagePost.objects.filter(category__contains="matatu culture")
+    infoVideo = VideoPost.objects.filter(category__contains="matatu culture")
+    infoYoutube = YoutubePost.objects.filter(category__contains="matatu culture")
+    context = {
+        'infoImage': infoImage,
+        'infoVideo': infoVideo,
+        'infoYoutube': infoYoutube,
+    }
+    return render(request, 'appBlogd/category.html', context)
+
+
+def categoryMemes(request):
+    infoImage = ImagePost.objects.filter(category__contains="memes and vines")
+    infoVideo = VideoPost.objects.filter(category__contains="memes and vines")
+    infoYoutube = YoutubePost.objects.filter(category__contains="memes and vines")
+    context = {
+        'infoImage': infoImage,
+        'infoVideo': infoVideo,
+        'infoYoutube': infoYoutube,
+    }
+    return render(request, 'appBlogd/category.html', context)
+
+
+def categoryReviews(request):
+    infoImage = ImagePost.objects.filter(category__contains="music and series review")
+    infoVideo = VideoPost.objects.filter(category__contains="music and series review")
+    infoYoutube = YoutubePost.objects.filter(category__contains="music and series review")
+    context = {
+        'infoImage': infoImage,
+        'infoVideo': infoVideo,
+        'infoYoutube': infoYoutube,
+    }
+    return render(request, 'appBlogd/category.html', context)
+
+
 def categoryPolitics(request):
     infoImage = ImagePost.objects.filter(category__contains="politics")
     infoVideo = VideoPost.objects.filter(category__contains="politics")
@@ -116,10 +152,31 @@ def categoryTechnology(request):
     return render(request, 'appBlogd/category.html', context)
 
 
-# View Post Function
-def view_post(request, view_id):
+def categoryYouths(request):
+    infoImage = ImagePost.objects.filter(category__contains="youths corner")
+    infoVideo = VideoPost.objects.filter(category__contains="youths corner")
+    infoYoutube = YoutubePost.objects.filter(category__contains="youths corner")
+    context = {
+        'infoImage': infoImage,
+        'infoVideo': infoVideo,
+        'infoYoutube': infoYoutube,
+    }
+    return render(request, 'appBlogd/category.html', context)
+
+
+# View Image Post Function
+def viewImage_post(request, view_id):
     result = get_object_or_404(ImagePost, pk=view_id)
     context = {
         'result': result,
     }
-    return render(request, 'appBlogd/view_post.html', context)
+    return render(request, 'appBlogd/viewImage_post.html', context)
+
+
+# View Video Post Function
+def viewVideo_post(request, view_id):
+    result = get_object_or_404(VideoPost, pk=view_id)
+    context = {
+        'result': result,
+    }
+    return render(request, 'appBlogd/viewVideo_post.html', context)

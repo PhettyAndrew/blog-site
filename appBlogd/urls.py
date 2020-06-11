@@ -13,10 +13,17 @@ urlpatterns = [
     path('category-celebrity', views.categoryCelebrity, name='catCelebrity'),
     path('category-history', views.categoryHistory, name='catHistory'),
     path('category-lifestyle', views.categoryLifestyle, name='catLifestyle'),
+    path('category-matatu_culture', views.categoryMatatu, name='catMatatu'),
+    path('category-memes_vines', views.categoryMemes, name='catMemes'),
+    path('category-movies_series_review', views.categoryReviews, name='catReviews'),
     path('category-politics', views.categoryPolitics, name='catPolitics'),
     path('category-sports', views.categorySports, name='catSports'),
     path('category-technology', views.categoryTechnology, name='catTechnology'),
+    path('category-youths_corner', views.categoryYouths, name='catYouths'),
 
-    # View Post Url
-    path('view-post/code:<int:view_id>/view', views.view_post, name='view_post'),
+    # View Image Post Url
+    path('view-image-post/code:<int:view_id>', views.viewImage_post, name='viewImage_post'),
+
+    # View Image Post Url
+    path('view-video-post/code:<int:view_id>', views.viewVideo_post, name='viewVideo_post'),
 ]

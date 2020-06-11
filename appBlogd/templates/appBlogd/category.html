@@ -4,7 +4,7 @@
 {% block index %}
 <!-- Top content -->
 <div class="image" style="position: relative; text-align: center;">
-    <img src="https://techandall.com/wp-content/uploads/2013/08/bg2-1024x769.jpg" style="width: 100%; height: 500px;">
+    <img src="https://techandall.com/wp-content/uploads/2013/08/bg2-1024x769.jpg" style="width: 100%; height: 300px;">
     <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffffff; animation-name: current_page; animation-duration: 3s;">
         <h1 style="font-family: BenchNine;">Category Select</h1>
         <p style="Font-family: Economica;"><u><a href="{% url 'appBlogd:index' %}">Home</a></u> / Category Select</p>
@@ -27,7 +27,7 @@
             <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoImage.category}}</h4>
             <h5 class="card-text" style="Font-family: Bentham;">{{infoImage.title}}</h5>
             <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoImage.date}}</p>
-            <a href="#" class="btn btn-success">
+            <a href="{% url 'appBlogd:viewImage_post' infoImage.id %}" class="btn btn-success">
                 <i class="fas fa-folder-open">View Post</i>
             </a>
           </div>
@@ -51,7 +51,7 @@
             <h4 class="card-text" style="color: #ffa500; Font-family: Teko;">{{infoVideo.category}}</h4>
             <h5 class="card-text" style="Font-family: Bentham;">{{infoVideo.title}}</h5>
             <p class="card-text" style="Font-family: Tenali Ramakrishna;">Posted on {{infoVideo.date}}</p>
-            <a href="#" class="btn btn-success">
+            <a href="{% url 'appBlogd:viewVideo_post' infoVideo.id %}" class="btn btn-success">
                 <i class="fas fa-folder-open">View Post</i>
             </a>
           </div>
