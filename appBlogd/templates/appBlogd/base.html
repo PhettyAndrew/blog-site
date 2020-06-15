@@ -29,6 +29,10 @@
           color: #ffa500 !important;
         }
 
+        .list-group:hover {
+          background-color: #ffa500 !important;
+        }
+
         /*
     code by Iatek LLC 2018 - CC 2.0 License - Attribution required
     code customized by Azmind.com
@@ -166,7 +170,7 @@
         }
     </style>
 </head>
-<body>
+<body class="">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="w72cud1o"></script>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -199,7 +203,7 @@
             </div>
           </li>
           <li class="nav-item" style="padding-left: 30px; font-family: satisfy; font-size: 25px;">
-            <a class="nav-link" href="#">Gallery</a>
+            <a class="nav-link" href="{% url 'appBlogd:gallery' %}">Gallery</a>
           </li>
           <li class="nav-item" style="padding-left: 30px; font-family: satisfy; font-size: 25px;">
             <a class="nav-link" href="#">Contact</a>
@@ -229,6 +233,12 @@
       </div>
     </nav>
 {% block index %}{% endblock %}
+    <div class="container-fluid" style="text-align: center; margin-top: 50px;">
+        <div class="row" style="display: inline-block;">
+            <h4 style="color: #ffa500; Font-family: piedra; font-size: 50px;">Blog-Site</h4>
+            <h4 style="font-family: BenchNine; margin-top: 10px;"><i><b>The Blog that has all you need to stay updated.</b></i></h4>
+        </div>
+    </div>
     <div class="container-fluid" style="margin-top: 50px; padding: 30px;">
         <div class="row">
             <div class="col-sm-8" style="border-color: #ffa500;">
@@ -241,22 +251,22 @@
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
-                <div class="alert alert-warning" role="alert" style="">
+                <div class="alert alert-warning" role="alert" style="border-color: #ffa500">
                   <h4 class="alert-heading" style="font-family: BenchNine;">Category</h4><hr>
                   <p style="Font-family: Tenali Ramakrishna;">Finding it difficult to find the post you want? Choose category of posts to view.</p>
-                  <ul style="list-style-type: none; Font-family: Tenali Ramakrishna;">
-                      <li><a href="{% url 'appBlogd:catBusiness' %}">Business</a></li>
-                      <li><a href="{% url 'appBlogd:catCars' %}">Cars</a></li>
-                      <li><a href="{% url 'appBlogd:catCelebrity' %}">Celebrity</a></li>
-                      <li><a href="{% url 'appBlogd:catHistory' %}">History</a></li>
-                      <li><a href="{% url 'appBlogd:catLifestyle' %}">Lifestyle</a></li>
-                      <li><a href="{% url 'appBlogd:catMatatu' %}">Matatu Culture</a></li>
-                      <li><a href="{% url 'appBlogd:catMemes' %}">Memes and Vines</a></li>
-                      <li><a href="{% url 'appBlogd:catReviews' %}">Music and Series Review</a></li>
-                      <li><a href="{% url 'appBlogd:catPolitics' %}">Politics</a></li>
-                      <li><a href="{% url 'appBlogd:catSports' %}">Sports</a></li>
-                      <li><a href="{% url 'appBlogd:catTechnology' %}">Technology</a></li>
-                      <li><a href="{% url 'appBlogd:catYouths' %}">Youths' Corner</a></li>
+                  <ul class="list-group" style="list-style-type: none; Font-family: Tenali Ramakrishna;">
+                      <a href="{% url 'appBlogd:catBusiness' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Business</li></a>
+                      <a href="{% url 'appBlogd:catCars' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Cars</li></a>
+                      <a href="{% url 'appBlogd:catCelebrity' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Celebrity</li></a>
+                      <a href="{% url 'appBlogd:catHistory' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">History</li></a>
+                      <a href="{% url 'appBlogd:catLifestyle' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Lifestyle</li></a>
+                      <a href="{% url 'appBlogd:catMatatu' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Matatu Culture</li></a>
+                      <a href="{% url 'appBlogd:catMemes' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Memes and Vines</li></a>
+                      <a href="{% url 'appBlogd:catReviews' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Music and Series Review</li></a>
+                      <a href="{% url 'appBlogd:catPolitics' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Politics</li></a>
+                      <a href="{% url 'appBlogd:catSports' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Sports</li></a>
+                      <a href="{% url 'appBlogd:catTechnology' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Technology</li></a>
+                      <a href="{% url 'appBlogd:catYouths' %}"><li class="list-group-item" style="margin: 10px; border-color: #ffffff;">Youths' Corner</li></a>
                   </ul>
                 </div>
             </div>
@@ -270,45 +280,32 @@
     </div>-->
 </div>
 <div class="container-fluid bg-light" style="padding: 50px;">
-    <div class="row">
-        <div class="col-sm-3">
+    <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="col-sm-4">
             <ul>
-                <h5 style="Font-family: Changa;">About Us</h5>
+                <h5 style="Font-family: Changa;"><strong>About Us</strong></h5>
             </ul>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <ul style="list-style-type: none;">
-                <h5 style="Font-family: Changa;">Navigator</h5>
+                <h5 style="Font-family: Changa;"><strong>Contact Us</strong></h5>
                 <li style="Font-family: Oswald;">
-                    <i class="fas fa-home"></i>
-                    <a href="#">Home</a>
+                    <i class="fas fa-map-marker"></i>
+                    <a>Address: </a>
                 </li>
                 <li style="Font-family: Oswald;">
-                    <i class="fas fa-info-circle"></i>
-                    <a href="#">About</a>
+                    <i class="fas fa-mobile-alt"></i>
+                    <a>Phone: </a>
                 </li>
                 <li style="Font-family: Oswald;">
-                    <i class="fas fa-newspaper"></i>
-                    <a href="#">News</a>
-                </li>
-                <li style="Font-family: Oswald;">
-                    <i class="fas fa-users"></i>
-                    <a href="#">Team</a>
-                </li>
-                <li style="Font-family: Oswald;">
-                    <i class="fas fa-scroll"></i>
-                    <a href="#">Plans</a>
+                    <i class="fas fa-envelope-open-text"></i>
+                    <a class="bg-light">Email: </a>
                 </li>
             </ul>
         </div>
-        <div class="col-sm-3">
-            <ul>
-                <h5 style="Font-family: Changa;">Contact Us</h5>
-            </ul>
-        </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <ul style="list-style-type: none;">
-                <h5 style="Font-family: Changa;">Follow Us</h5>
+                <h5 style="Font-family: Changa;"><strong>Follow Us</strong></h5>
                 <li style="Font-family: Oswald;">
                     <i class="fab fa-facebook-f"></i>
                     <a href="#">Facebook</a>
@@ -324,8 +321,8 @@
             </ul>
         </div>
     </div>
-
-    <div class="row" style="margin-top: 50px;">
+    <hr>
+    <div class="row" style="">
         <div class="col-sm-2"></div>
         <div class="col-sm-8" style="text-align:center;">
             <img class="rounded-circle mx-auto img-fluid" src="https://sigtunafoundation.pythonanywhere.com/media/loadNutlogo.png" style="max-width: 5%;">

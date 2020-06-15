@@ -1,0 +1,27 @@
+{% extends 'appBlogd/base.html' %}
+{% block title %}Blog-Site: Gallery{% endblock %}
+{% block index %}
+<!-- Top content -->
+<div class="image" style="position: relative; text-align: center;">
+    <img src="https://techandall.com/wp-content/uploads/2013/08/bg2-1024x769.jpg" style="width: 100%; height: 300px;">
+    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffffff; animation-name: current_page; animation-duration: 3s;">
+        <h1 style="font-family: BenchNine;">Gallery</h1>
+        <p style="Font-family: Economica;"><u><a href="{% url 'appBlogd:index' %}">Home</a></u> / Gallery</p>
+    </div>
+</div>
+{% endblock %}
+{% block pane %}
+<div class="container-fluid">
+    <div class="row">
+        {% for image in image %}
+        <div class="col-sm-4" style="margin-top: 2px;">
+            <div class="card border-0" style="width: 18rem;">
+                <a href="{% url 'appBlogd:viewImage_post' image.id %}">
+                    <img src="{{image.image.url}}" class="card-img-top" style="width: 100%; height: 300px;" alt="...">
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

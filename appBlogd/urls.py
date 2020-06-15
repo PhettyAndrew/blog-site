@@ -29,4 +29,7 @@ urlpatterns = [
 
     # View Youtube Post Url
     path('view-youtube-post/code:<int:view_id>', views.viewYoutube_post, name='viewYoutube_post'),
+
+    # Gallery Url
+    path('gallery', views.gallery, name='gallery'),
 ]

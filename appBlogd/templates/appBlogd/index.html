@@ -1,5 +1,5 @@
 {% extends 'appBlogd/base.html' %}
-{% block title %}Blog-Site : Home{% endblock %}
+{% block title %}Blog-Site: Home{% endblock %}
 {% block index %}
 <!-- Top content -->
 <div class="top-content">
@@ -34,7 +34,7 @@
 </div>
 <div class="row">
     {% for posts in posts %}
-    <div class="col-sm-4">
+    <div class="col-sm-4" style="margin-top: 10px;">
         <div class="card border-0" style="width: 18rem;">
             <a href="{% url 'appBlogd:viewImage_post' posts.id %}">
                 <img src="{{posts.image.url}}" class="card-img-top" style="width: 100%; height: 300px;" alt="...">
