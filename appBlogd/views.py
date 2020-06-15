@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import ImagePost, VideoPost, YoutubePost
+from .forms import ContactForm
 from django.db.models import DateTimeField
 from django.db.models.functions import Trunc
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -283,4 +284,15 @@ def gallery(request):
     }
     return render(request, 'appBlogd/gallery.html', context)
 
+
 # Contact Function
+def contact(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        success = {
+            'success': 'Registration Successful!!',
+            'form': form,
+        }
+        return render(request, 'appBlogd/contact.html', success)
+    return render(request, 'appBlogd/contact.html', {'form': form})

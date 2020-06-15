@@ -32,4 +32,7 @@ urlpatterns = [
 
     # Gallery Url
     path('gallery', views.gallery, name='gallery'),
+
+    # Contact Url
+    path('contact_us', views.contact, name='contact'),
 ]

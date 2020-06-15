@@ -21,6 +21,12 @@
     <link href='https://fonts.googleapis.com/css?family=BenchNine' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Tenali Ramakrishna' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lemonada' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+
 
     <title>{% block title %}{% endblock %}</title>
 
@@ -206,7 +212,7 @@
             <a class="nav-link" href="{% url 'appBlogd:gallery' %}">Gallery</a>
           </li>
           <li class="nav-item" style="padding-left: 30px; font-family: satisfy; font-size: 25px;">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{% url 'appBlogd:contact' %}">Contact</a>
           </li>
         </ul>
         <span class="navbar-text" style="margin-left: 30px; margin-right: 30px;">
@@ -281,42 +287,48 @@
 </div>
 <div class="container-fluid bg-light" style="padding: 50px;">
     <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <ul>
-                <h5 style="Font-family: Changa;"><strong>About Us</strong></h5>
+                <h5 style="Font-family: Jura;"><strong>About Us</strong></h5>
             </ul>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <ul style="list-style-type: none;">
-                <h5 style="Font-family: Changa;"><strong>Contact Us</strong></h5>
+                <h5 style="Font-family: Jura;"><strong>Contact Us</strong></h5>
                 <li style="Font-family: Oswald;">
-                    <i class="fas fa-map-marker"></i>
-                    <a>Address: </a>
+                    <p style="color: #A9A9A9;">Address: </p>
                 </li>
                 <li style="Font-family: Oswald;">
-                    <i class="fas fa-mobile-alt"></i>
-                    <a>Phone: </a>
+                    <p style="color: #A9A9A9;">Phone: </p>
                 </li>
                 <li style="Font-family: Oswald;">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <a class="bg-light">Email: </a>
+                    <p style="color: #A9A9A9;">Email: </p>
                 </li>
             </ul>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <ul style="list-style-type: none;">
-                <h5 style="Font-family: Changa;"><strong>Follow Us</strong></h5>
-                <li style="Font-family: Oswald;">
+                <h5 style="Font-family: Jura;"><strong>Follow Us</strong></h5>
+                <li style="Font-family: Oswald; color: #A9A9A9;">
                     <i class="fab fa-facebook-f"></i>
-                    <a href="#">Facebook</a>
+                    <a href="#" style="color: #A9A9A9;">Facebook</a>
                 </li>
-                <li style="Font-family: Oswald;">
+                <li style="Font-family: Oswald; color: #A9A9A9;">
                     <i class="fab fa-twitter"></i>
-                    <a href="#">Twitter</a>
+                    <a href="#" style="color: #A9A9A9;">Twitter</a>
                 </li>
-                <li style="Font-family: Oswald;">
+                <li style="Font-family: Oswald; color: #A9A9A9;">
                     <i class="fab fa-youtube"></i>
-                    <a href="#">YouTube</a>
+                    <a href="#" style="color: #A9A9A9;">YouTube</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul style="list-style-type: none;">
+                <h5 style="Font-family: Jura;"><strong>Newsletter Subscription</strong></h5>
+                <li style="Font-family: Oswald;">
+                    <p style="color: #A9A9A9">Subscribe to Receive Newsletters through Email when we post new posts to keep you on the know.</p>
+                    <a href="{% url 'appBlogd:contact' %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Subscribe</a>
                 </li>
             </ul>
         </div>

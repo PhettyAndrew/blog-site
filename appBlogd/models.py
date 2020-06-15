@@ -61,34 +61,18 @@ class YoutubePost(models.Model):
         return self.title
 
 
-# Post Comment Table
-class ImagePostComment(models.Model):
-    post = models.ForeignKey(ImagePost, on_delete=models.CASCADE)
+newsletter_choice = (
+    ('Yes', 'yes'),
+    ('No', 'no'),
+)
+
+
+# Contact Table
+class Contact(models.Model):
     name = models.CharField(max_length=40)
     email = models.EmailField()
-    comment = models.TextField()
-
-    def __str__(self):
-        return self.name
-
-
-# Post Comment Table
-class VideoPostComment(models.Model):
-    post = models.ForeignKey(VideoPost, on_delete=models.CASCADE)
-    name = models.CharField(max_length=40)
-    email = models.EmailField()
-    comment = models.TextField()
-
-    def __str__(self):
-        return self.name
-
-
-# Post Comment Table
-class YoutubePostComment(models.Model):
-    post = models.ForeignKey(YoutubePost, on_delete=models.CASCADE)
-    name = models.CharField(max_length=40)
-    email = models.EmailField()
-    comment = models.TextField()
+    receive_newsletter = models.CharField(max_length=50, choices=newsletter_choice, default='yes')
+    message = models.TextField()
 
     def __str__(self):
         return self.name

@@ -13,20 +13,18 @@
 {% endblock %}
 {% endfor %}
 {% block pane %}
-{% if infoImage %}
-    {% for infoImage in infoImage %}
+{% if infoImage or infoVideo or infoYoutube %}
     <div class="alert alert-success">
-        <h2 style="Font-family: Tenali Ramakrishna;">This is all the posts we could find in category {{infoImage.category}}</h2>
+        <h2 style="Font-family: Jura;">This is all the posts we could find in the category</h2>
         <ul>
             <li>Text Posts: {{imageCount}}</li>
             <li>Uploaded Video Posts: {{videoCount}}</li>
             <li>Youtube Posts: {{youtubeCount}}</li>
         </ul>
     </div>
-    {% endfor %}
 {% else %}
     <div class="alert alert-danger">
-        <h2 style="Font-family: Tenali Ramakrishna;">No posts were found in this category😅<br>But no worries there's surely something for you in other categories😉</h2>
+        <h2 style="Font-family: Jura;">No posts were found in this category😅<br>But no worries there's surely something for you in other categories😉</h2>
     </div>
 {% endif %}
 <div class="row">
