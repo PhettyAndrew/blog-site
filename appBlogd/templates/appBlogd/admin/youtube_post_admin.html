@@ -1,0 +1,54 @@
+{% extends 'appBlogd/admin/base_admin.html' %}
+{% block title %}Blog-Site: Admin{% endblock %}
+{% block content %}
+<div class="alert" role="alert" style="width: 100%;">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="alert-heading" style="font-family: BenchNine;">Youtube Video Posts Table</h4>
+        </div>
+        <div class="col-sm-6" style="text-align: right;">
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="#">Add a New Youtube Video</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table" style="Font-family: Dosis;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Video Url</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Author</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% if post %}
+            {% for post in post %}
+            <tr>
+              <td>{{post.id}}</td>
+              <td>
+                <a href="https://www.youtube.com/embed/{{post.url}}" data-target="">https://www.youtube.com/embed/{{post.url}}</a>
+              </td>
+              <td>{{post.title}}</td>
+              <td>{{post.description}}</td>
+              <td>{{post.author}}</td>
+              <td>
+                <a href="#" class="btn btn-success btn-sm">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-sm"
+                   onclick='return confirm("Are you sure you want to delete {{post.title}}?")'>
+                    <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+            {% endfor %}
+          {% endif %}
+        </table>
+    </div>
+</div>
+{% endblock %}

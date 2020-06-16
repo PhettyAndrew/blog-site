@@ -296,3 +296,30 @@ def contact(request):
         }
         return render(request, 'appBlogd/contact.html', success)
     return render(request, 'appBlogd/contact.html', {'form': form})
+
+
+# Text Post Admin
+def text_post_admin(request):
+    text_post = ImagePost.objects.order_by('id')
+    context = {
+        'text_post': text_post,
+    }
+    return render(request, 'appBlogd/admin/text_post_admin.html', context)
+
+
+# Video Post Admin
+def video_post_admin(request):
+    post = VideoPost.objects.order_by('id')
+    context = {
+        'post': post,
+    }
+    return render(request, 'appBlogd/admin/video_post_admin.html', context)
+
+
+# Youtube Post Admin
+def youtube_post_admin(request):
+    post = YoutubePost.objects.order_by('id')
+    context = {
+        'post': post,
+    }
+    return render(request, 'appBlogd/admin/youtube_post_admin.html', context)

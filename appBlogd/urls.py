@@ -35,4 +35,14 @@ urlpatterns = [
 
     # Contact Url
     path('contact_us', views.contact, name='contact'),
+
+    # Text Post Admin Url
+    path('text_post-admin', views.text_post_admin, name='text_post_admin'),
+
+    # Video Post Admin Url
+    path('video_post-admin', views.video_post_admin, name='video_post_admin'),
+
+    # Youtube Post Admin Url
+    path('youtube_post-admin', views.youtube_post_admin, name='youtube_post_admin'),
+
 ]

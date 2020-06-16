@@ -1,0 +1,56 @@
+{% extends 'appBlogd/admin/base_admin.html' %}
+{% block title %}Blog-Site: Admin{% endblock %}
+{% block content %}
+<div class="alert" role="alert" style="width: 100%;">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="alert-heading" style="font-family: BenchNine;">Video Posts Table</h4>
+        </div>
+        <div class="col-sm-6" style="text-align: right;">
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="#">Upload a New Video</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table" style="Font-family: Dosis;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Video</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Author</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% if post %}
+            {% for post in post %}
+            <tr>
+              <td>{{post.id}}</td>
+              <td>
+                <video style="max-width: 50%; height: 40px;" controls>
+                    <source src="{{post.video.url}}" type="video/mp4">
+                </video>
+              </td>
+              <td>{{post.title}}</td>
+              <td>{{post.description}}</td>
+              <td>{{post.author}}</td>
+              <td>
+                <a href="#" class="btn btn-success btn-sm">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-sm"
+                   onclick='return confirm("Are you sure you want to delete {{post.title}}?")'>
+                    <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+            {% endfor %}
+          {% endif %}
+        </table>
+    </div>
+</div>
+{% endblock %}
