@@ -46,10 +46,14 @@
     <div class="row">
       <div class="col-2" style="Font-family: Jura; padding: 10px;">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <h4><strong>Navigation Pane</strong></h4>
-          <a class="nav-link" href="{% url 'appBlogd:text_post_admin' %}" role="tab" aria-selected="true">Text Posts</a>
-          <a class="nav-link" href="{% url 'appBlogd:video_post_admin' %}" role="tab" aria-selected="false">Video Posts</a>
-          <a class="nav-link" href="{% url 'appBlogd:youtube_post_admin' %}" role="tab" aria-selected="false">Youtube Posts</a>
+          <h4><strong>Navigation Pane</strong></h4>
+          <h5><small>Posts</small></h5>
+              <a class="nav-link" href="{% url 'appBlogd:text_post_admin' %}" role="tab" aria-selected="true">Text Posts</a>
+              <a class="nav-link" href="{% url 'appBlogd:video_post_admin' %}" role="tab" aria-selected="false">Video Posts</a>
+              <a class="nav-link" href="{% url 'appBlogd:youtube_post_admin' %}" role="tab" aria-selected="false">Youtube Posts</a>
+          <h5><small>Users</small></h5>
+            <a class="nav-link" href="{% url 'appBlogd:text_post_admin' %}" role="tab" aria-selected="true">Administrators</a>
+            <a class="nav-link" href="{% url 'appBlogd:contact_admin' %}" role="tab" aria-selected="true">Registered/Subscribed Users</a>
         </div>
       </div>
       <div class="col-10">

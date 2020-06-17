@@ -1,0 +1,39 @@
+{% extends 'appBlogd/admin/base_admin.html' %}
+{% block title %}Blog-Site: Admin{% endblock %}
+{% block content %}
+<div class="container" style="text-align: center; margin-top: 20px;">
+    <div class="row" style="display: inline-block;">
+        <h4 style="Font-family: Orbitron;">Youtube Video Posting Form</h4>
+        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>Post a new Youtube Video Here</i> </h4>
+    </div>
+</div>
+{% load crispy_forms_tags %}
+<div class="container" style=" margin-top: 50px; margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-sm-3" style="Font-family: Dosis;">
+            <h5><strong>How to post a Youtube Video</strong></h5>
+            <p>Follow the instructions below for what is required in the Url Field</p>
+            <ol>
+                <li>Go to Youtube</li>
+                <li>Click on the Video you want to view</li>
+                <li>Check the link on the url bar<br>You will see a link like this <i>https://www.youtube.com/watch?v=-7PTBFlhIds&t=1s</i></li>
+                <li>Only copy the short address to the video<br><i>https://www.youtube.com/watch?v=<strong>-7PTBFlhIds&t=1s</strong></i></li>
+                <li>In our case the short address to the video is <strong>-7PTBFlhIds&t=1s</strong></li>
+                <li>Paste the Short address in the Url Field</li>
+                <li>Fill the remaining fields and Submit</li>
+            </ol>
+        </div>
+        <div class="col-sm-9" style="">
+            <form method="post" enctype="multipart/form-data">
+                <legend style="Font-family: Dosis;"><small style="Font-family: Dosis;">*Be sure to follow the instructions for a successful post*</small></legend>
+                <fieldset>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </fieldset>
+                <button type="submit" class="btn btn-success" style="Font-family: Jura;">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

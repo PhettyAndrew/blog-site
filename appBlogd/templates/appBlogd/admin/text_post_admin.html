@@ -7,10 +7,15 @@
             <h4 class="alert-heading" style="font-family: BenchNine;">Text Posts Table</h4>
         </div>
         <div class="col-sm-6" style="text-align: right;">
-            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="#">Make a New Post</a>
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="{% url 'appBlogd:text_post_form' %}">Make a New Post</a>
         </div>
     </div>
 </div>
+{% if success %}
+<div class="alert alert-success" role="alert" style="margin-top: 50px;">
+    <h4 style="Font-family: Jura;">{{success}}</h4>
+</div>
+{% endif %}
 <div class="row">
     <div class="col-sm-12">
         <table class="table" style="Font-family: Dosis;">
@@ -34,10 +39,10 @@
               <td>{{text_post.description}}</td>
               <td>{{text_post.author}}</td>
               <td>
-                <a href="#" class="btn btn-success btn-sm">
+                <a href="{% url 'appBlogd:update_text_post' text_post.id %}" class="btn btn-success btn-sm">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="#" class="btn btn-danger btn-sm"
+                <a href="{% url 'appBlogd:delete_text_post' text_post.id %}" class="btn btn-danger btn-sm"
                    onclick='return confirm("Are you sure you want to delete {{text_post.title}}?")'>
                     <i class="fas fa-trash"></i>
                 </a>

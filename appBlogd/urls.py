@@ -45,4 +45,33 @@ urlpatterns = [
     # Youtube Post Admin Url
     path('youtube_post-admin', views.youtube_post_admin, name='youtube_post_admin'),
 
+    # Text Post Form Url
+    path('new_text_post', views.textPostForm, name='text_post_form'),
+
+    # Video Post Form Url
+    path('upload_video_post', views.videoPostForm, name='video_post_form'),
+
+    # Youtube Post Form Url
+    path('post_youtube_video', views.youtubePostForm, name='youtube_post_form'),
+
+    # Delete Text Post Url
+    path('delete_text_post/code:<int:post_id>', views.text_post_delete, name='delete_text_post'),
+
+    # Delete Video Post Url
+    path('delete_video_post/code:<int:post_id>', views.video_post_delete, name='delete_video_post'),
+
+    # Delete Youtube Post Url
+    path('delete_youtube_post/code:<int:post_id>', views.youtube_post_delete, name='delete_youtube_post'),
+
+    # Update Text Post Url
+    path('update_text_post/code:<int:post_id>', views.update_text_post, name='update_text_post'),
+
+    # Update Video Post Url
+    path('update_video_post/code:<int:post_id>', views.update_video_post, name='update_video_post'),
+
+    # Update Youtube Post Url
+    path('update_youtube_post/code:<int:post_id>', views.update_youtube_post, name='update_youtube_post'),
+
+    # Contact Admin
+    path('contact|subscribers', views.contact_admin, name='contact_admin'),
 ]

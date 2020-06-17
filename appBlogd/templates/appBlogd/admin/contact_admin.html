@@ -1,0 +1,46 @@
+{% extends 'appBlogd/admin/base_admin.html' %}
+{% block title %}Blog-Site: Admin{% endblock %}
+{% block content %}
+<div class="alert" role="alert" style="width: 100%;">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="alert-heading" style="font-family: BenchNine;">Registered/Subscribed Users Table</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table" style="Font-family: Dosis;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Receive newsletter</th>
+              <th>Message</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% if post %}
+            {% for post in post %}
+            <tr>
+              <td>{{post.id}}</td>
+              <td>{{post.name}}</td>
+              <td><a href="mailto:{{post.email}}" target="_blank">{{post.email}}</a></td>
+              <td>{{post.receive_newsletter}}</td>
+              <td>{{post.message}}</td>
+              <td>
+                <a href="#" class="btn btn-danger btn-sm"
+                   onclick='return confirm("Are you sure you want to delete {{post.name}}?")'>
+                    <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+            {% endfor %}
+          {% endif %}
+        </table>
+    </div>
+</div>
+{% endblock %}

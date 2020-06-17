@@ -7,7 +7,7 @@
             <h4 class="alert-heading" style="font-family: BenchNine;">Video Posts Table</h4>
         </div>
         <div class="col-sm-6" style="text-align: right;">
-            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="#">Upload a New Video</a>
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="{% url 'appBlogd:video_post_form' %}">Upload a New Video</a>
         </div>
     </div>
 </div>
@@ -38,10 +38,10 @@
               <td>{{post.description}}</td>
               <td>{{post.author}}</td>
               <td>
-                <a href="#" class="btn btn-success btn-sm">
+                <a href="{% url 'appBlogd:update_video_post' post.id %}" class="btn btn-success btn-sm">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="#" class="btn btn-danger btn-sm"
+                <a href="{% url 'appBlogd:delete_video_post' post.id %}" class="btn btn-danger btn-sm"
                    onclick='return confirm("Are you sure you want to delete {{post.title}}?")'>
                     <i class="fas fa-trash"></i>
                 </a>

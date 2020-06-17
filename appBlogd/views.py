@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from .models import ImagePost, VideoPost, YoutubePost
-from .forms import ContactForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import ImagePost, VideoPost, YoutubePost, Contact
+from .forms import ContactForm, TextPostForm, YoutubePostForm, VideoPostForm
 from django.db.models import DateTimeField
 from django.db.models.functions import Trunc
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -323,3 +323,96 @@ def youtube_post_admin(request):
         'post': post,
     }
     return render(request, 'appBlogd/admin/youtube_post_admin.html', context)
+
+
+# Text Posting Function
+def textPostForm(request):
+    form = TextPostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('appBlogd:text_post_admin')
+    return render(request, 'appBlogd/admin/text_post_form.html', {'form': form})
+
+
+# Video Posting Function
+def videoPostForm(request):
+    if request.method == 'POST':
+        form = VideoPostForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            return redirect('appBlogd:video_post_admin')
+    else:
+        form = VideoPostForm()
+    return render(request, 'appBlogd/admin/video_post_form.html', {'form': form})
+
+
+# Youtube Posting Function
+def youtubePostForm(request):
+    form = YoutubePostForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('appBlogd:youtube_post_admin')
+    return render(request, 'appBlogd/admin/youtube_post_form.html', {'form': form})
+
+
+# Delete Text Post
+def text_post_delete(request, post_id):
+    post = get_object_or_404(ImagePost, pk=post_id)
+    post.delete()
+    return redirect('appBlogd:text_post_admin')
+
+
+# Delete Video Post
+def video_post_delete(request, post_id):
+    post = get_object_or_404(VideoPost, pk=post_id)
+    post.delete()
+    return redirect('appBlogd:video_post_admin')
+
+
+# Delete Youtube Post
+def youtube_post_delete(request, post_id):
+    post = get_object_or_404(YoutubePost, pk=post_id)
+    post.delete()
+    return redirect('appBlogd:youtube_post_admin')
+
+
+# Update Text Post
+def update_text_post(request, post_id):
+    post = get_object_or_404(ImagePost, pk=post_id)
+    form = TextPostForm(request.POST or None, request.FILES or None, instance=post)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.save()
+        return redirect('appBlogd:text_post_admin')
+    return render(request, 'appBlogd/admin/text_post_form.html', {'form': form})
+
+
+# Update Video Post
+def update_video_post(request, post_id):
+    post = get_object_or_404(VideoPost, pk=post_id)
+    form = VideoPostForm(request.POST or None, request.FILES or None, instance=post)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.save()
+        return redirect('appBlogd:video_post_admin')
+    return render(request, 'appBlogd/admin/video_post_form.html', {'form': form})
+
+
+# Update Text Post
+def update_youtube_post(request, post_id):
+    post = get_object_or_404(YoutubePost, pk=post_id)
+    form = YoutubePostForm(request.POST or None, request.FILES or None, instance=post)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.save()
+        return redirect('appBlogd:youtube_post_admin')
+    return render(request, 'appBlogd/admin/youtube_post_form.html', {'form': form})
+
+
+# Contact Admin
+def contact_admin(request):
+    post = Contact.objects.order_by('id')
+    context = {
+        'post': post,
+    }
+    return render(request, 'appBlogd/admin/contact_admin.html', context)
