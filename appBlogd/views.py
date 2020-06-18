@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import ImagePost, VideoPost, YoutubePost, Contact
-from .forms import ContactForm, TextPostForm, YoutubePostForm, VideoPostForm
-from django.db.models import DateTimeField
-from django.db.models.functions import Trunc
+from .forms import ContactForm, TextPostForm, YoutubePostForm, VideoPostForm, FormUser
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -279,8 +280,18 @@ def viewYoutube_post(request, view_id):
 # Gallery Function
 def gallery(request):
     image = ImagePost.objects.order_by('?')
+    paginator = Paginator(image, 30)
+    page = request.GET.get('page', 1)
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     context = {
-        'image': image,
+        'posts': posts,
     }
     return render(request, 'appBlogd/gallery.html', context)
 
@@ -298,6 +309,7 @@ def contact(request):
     return render(request, 'appBlogd/contact.html', {'form': form})
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Text Post Admin
 def text_post_admin(request):
     text_post = ImagePost.objects.order_by('id')
@@ -307,6 +319,7 @@ def text_post_admin(request):
     return render(request, 'appBlogd/admin/text_post_admin.html', context)
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Video Post Admin
 def video_post_admin(request):
     post = VideoPost.objects.order_by('id')
@@ -316,6 +329,7 @@ def video_post_admin(request):
     return render(request, 'appBlogd/admin/video_post_admin.html', context)
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Youtube Post Admin
 def youtube_post_admin(request):
     post = YoutubePost.objects.order_by('id')
@@ -325,6 +339,7 @@ def youtube_post_admin(request):
     return render(request, 'appBlogd/admin/youtube_post_admin.html', context)
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Text Posting Function
 def textPostForm(request):
     form = TextPostForm(request.POST or None, request.FILES or None)
@@ -334,6 +349,7 @@ def textPostForm(request):
     return render(request, 'appBlogd/admin/text_post_form.html', {'form': form})
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Video Posting Function
 def videoPostForm(request):
     if request.method == 'POST':
@@ -346,6 +362,7 @@ def videoPostForm(request):
     return render(request, 'appBlogd/admin/video_post_form.html', {'form': form})
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Youtube Posting Function
 def youtubePostForm(request):
     form = YoutubePostForm(request.POST or None)
@@ -355,6 +372,7 @@ def youtubePostForm(request):
     return render(request, 'appBlogd/admin/youtube_post_form.html', {'form': form})
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Delete Text Post
 def text_post_delete(request, post_id):
     post = get_object_or_404(ImagePost, pk=post_id)
@@ -362,6 +380,7 @@ def text_post_delete(request, post_id):
     return redirect('appBlogd:text_post_admin')
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Delete Video Post
 def video_post_delete(request, post_id):
     post = get_object_or_404(VideoPost, pk=post_id)
@@ -369,6 +388,7 @@ def video_post_delete(request, post_id):
     return redirect('appBlogd:video_post_admin')
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Delete Youtube Post
 def youtube_post_delete(request, post_id):
     post = get_object_or_404(YoutubePost, pk=post_id)
@@ -376,6 +396,7 @@ def youtube_post_delete(request, post_id):
     return redirect('appBlogd:youtube_post_admin')
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Update Text Post
 def update_text_post(request, post_id):
     post = get_object_or_404(ImagePost, pk=post_id)
@@ -387,6 +408,7 @@ def update_text_post(request, post_id):
     return render(request, 'appBlogd/admin/text_post_form.html', {'form': form})
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Update Video Post
 def update_video_post(request, post_id):
     post = get_object_or_404(VideoPost, pk=post_id)
@@ -398,6 +420,7 @@ def update_video_post(request, post_id):
     return render(request, 'appBlogd/admin/video_post_form.html', {'form': form})
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Update Text Post
 def update_youtube_post(request, post_id):
     post = get_object_or_404(YoutubePost, pk=post_id)
@@ -409,6 +432,7 @@ def update_youtube_post(request, post_id):
     return render(request, 'appBlogd/admin/youtube_post_form.html', {'form': form})
 
 
+@login_required(login_url='appBlogd:admin_login')
 # Contact Admin
 def contact_admin(request):
     post = Contact.objects.order_by('id')
@@ -416,3 +440,85 @@ def contact_admin(request):
         'post': post,
     }
     return render(request, 'appBlogd/admin/contact_admin.html', context)
+
+
+@login_required(login_url='appBlogd:admin_login')
+# Delete Subscriber Post
+def subscriber_delete(request, post_id):
+    post = get_object_or_404(Contact, pk=post_id)
+    post.delete()
+    return redirect('appBlogd:contact_admin')
+
+
+# Administrators Function
+def admins(request):
+    result = User.objects.order_by('id')
+    context = {
+        'result': result,
+    }
+    return render(request, 'appBlogd/admin/admins.html', context)
+
+
+#Login Admin
+def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect('appBlogd:index_admin')
+        else:
+            message = {'message': 'Invalid Credentials'}
+            return render(request, 'appBlogd/admin/admin_login.html', message)
+    return render(request, 'appBlogd/admin/admin_login.html')
+
+
+
+# Register Admin
+def admin_register(request):
+    form = FormUser(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        regist = form.save(commit=False)
+        regist.set_password(password)
+        regist.save()
+        authenticate(username=username, password=password)
+        return redirect('appBlogd:admins_table')
+    return render(request, 'appBlogd/admin/admin_register.html', {'form': form})
+
+
+# Update Text Post
+def update_admin(request, post_id):
+    post = get_object_or_404(User, pk=post_id)
+    form = FormUser(request.POST or None, instance=post)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.save()
+        return redirect('appBlogd:admins_table')
+    context = {
+        'form': form,
+        'update': 'update',
+    }
+    return render(request, 'appBlogd/admin/admin_register.html', context)
+
+
+@login_required(login_url='appBlogd:admin_login')
+# Delete Youtube Post
+def delete_admin(request, post_id):
+    post = get_object_or_404(User, pk=post_id)
+    post.delete()
+    return redirect('appBlogd:admins_table')
+
+
+# Logout Admin
+def logout_admin(request):
+    logout(request)
+    return redirect('appBlogd:index')
+
+
+@login_required(login_url='appBlogd:admin_login')
+# Index Admin
+def index_admin(request):
+    return render(request, 'appBlogd/admin/index_admin.html')

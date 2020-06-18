@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'appBlogd/admin/base_admin.html' %}
+{% block title %}Blog-Site: Admin{% endblock %}
+{% block content %}
+<div class="alert" role="alert" style="width: 100%;">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="alert-heading" style="font-family: BenchNine;">Text Posts Table</h4>
+        </div>
+        <div class="col-sm-6" style="text-align: right;">
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="{% url 'appBlogd:admin_register' %}">Add an Administrator</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table" style="Font-family: Dosis;">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Username</th>
+              <th>Email Address</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% if result %}
+            {% for result in result %}
+            <tr>
+              <td>{{result.id}}</td>
+              <td>{{result.username}}</td>
+                <td><a href="mailto:{{result.email}}" target="_blank">{{result.email}}</a></td>
+              <td>
+                <a href="{% url 'appBlogd:update_admin' result.id %}" class="btn btn-success btn-sm">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="{% url 'appBlogd:delete_admin' result.id %}" class="btn btn-danger btn-sm"
+                   onclick='return confirm("Are you sure you want to delete {{result.username}}?")'>
+                    <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+            {% endfor %}
+          {% endif %}
+        </table>
+    </div>
+</div>
+{% endblock %}

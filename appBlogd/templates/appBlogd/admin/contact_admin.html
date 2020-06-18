@@ -13,7 +13,7 @@
         <table class="table" style="Font-family: Dosis;">
           <thead>
             <tr>
-              <th>#</th>
+              <th>Id</th>
               <th>Name</th>
               <th>Email</th>
               <th>Receive newsletter</th>
@@ -31,7 +31,7 @@
               <td>{{post.receive_newsletter}}</td>
               <td>{{post.message}}</td>
               <td>
-                <a href="#" class="btn btn-danger btn-sm"
+                <a href="{% url 'appBlogd:delete_subscriber' post.id %}" class="btn btn-danger btn-sm"
                    onclick='return confirm("Are you sure you want to delete {{post.name}}?")'>
                     <i class="fas fa-trash"></i>
                 </a>

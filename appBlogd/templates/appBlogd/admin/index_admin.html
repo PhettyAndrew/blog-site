@@ -1,0 +1,87 @@
+{% extends 'appBlogd/admin/base_admin.html' %}
+{% block title %}Blog-Site: Admin{% endblock %}
+{% block content %}
+<div class="alert" role="alert" style="width: 100%;">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="alert-heading" style="font-family: BenchNine;">Administrator Site</h4>
+        </div>
+        <div class="col-sm-6" style="text-align: right;">
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="{% url 'appBlogd:index' %}">Go to Site</a>
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="{% url 'appBlogd:logout_admin' %}">Sign Out</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h5 style="Font-family: Jura;">Posts</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+              <h5 class="card-title" style="Font-family: Jura;"><strong>Text Posts</strong></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Manipulate Image and Text posts as an Administrator</h6>
+            <p class="card-text" style="Font-family: Dosis;">This category is for posts that contain Images and Texts only.</p>
+            <a href="{% url 'appBlogd:text_post_admin' %}" class="card-link btn btn-success" style="Font-family: Jura;">Open</a>
+          </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                  <h5 class="card-title" style="Font-family: Jura;"><strong>Video Posts</strong></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Manipulate Video posts as an Administrator</h6>
+                <p class="card-text" style="Font-family: Dosis;">Videos that are to be uploaded belong to this category.</p>
+                <a href="{% url 'appBlogd:video_post_admin' %}" class="card-link btn btn-success" style="Font-family: Jura;">Open</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                  <h5 class="card-title" style="Font-family: Jura;"><strong>Youtube Posts</strong></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Manipulate Youtube posts as an Administrator</h6>
+                <p class="card-text" style="Font-family: Dosis;">Videos to be sourced from Youtube belong to this category.</p>
+                <a href="{% url 'appBlogd:youtube_post_admin' %}" class="card-link btn btn-success" style="Font-family: Jura;">Open</a>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-sm-12">
+        <h5 style="Font-family: Jura;">Users</h5>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 30px;">
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+              <h5 class="card-title" style="Font-family: Jura;"><strong>Administrators</strong></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Take charge of the Admin Site</h6>
+            <p class="card-text" style="Font-family: Dosis;">Manage your Admin profile and people you would like to add as Admins.</p>
+            <a href="{% url 'appBlogd:admins_table' %}" class="card-link btn btn-success" style="Font-family: Jura;">Open</a>
+          </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem; display: inline-block;">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                  <h5 class="card-title" style="Font-family: Jura;"><strong>Subscribers</strong></h5>
+                <h6 class="card-subtitle mb-2 text-muted">View your Subscribers</h6>
+                <p class="card-text" style="Font-family: Dosis;">Send Newsletters and Reply to subscribers' messages</p>
+                <a href="{% url 'appBlogd:contact_admin' %}" class="card-link btn btn-success" style="Font-family: Jura;">Open</a>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

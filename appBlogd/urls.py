@@ -74,4 +74,28 @@ urlpatterns = [
 
     # Contact Admin
     path('contact|subscribers', views.contact_admin, name='contact_admin'),
+
+    # Delete Subscriber Url
+    path('delete_subscriber/code:<int:post_id>', views.subscriber_delete, name='delete_subscriber'),
+
+    # Administrators Url
+    path('administrators_table', views.admins, name='admins_table'),
+
+    # Admin Login
+    path('login', views.admin_login, name='admin_login'),
+
+    # Register Admin
+    path('admin_register', views.admin_register, name='admin_register'),
+
+    # Update Admin
+    path('update_admin/code:<int:post_id>', views.update_admin, name='update_admin'),
+
+    # Delete Admin
+    path('delete_admin/code:<int:post_id>', views.delete_admin, name='delete_admin'),
+
+    # Logout Admin
+    path('logout', views.logout_admin, name='logout_admin'),
+
+    # Index Admin
+    path('index-admin', views.index_admin, name='index_admin'),
 ]

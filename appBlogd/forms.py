@@ -1,5 +1,6 @@
 from django import forms
 from .models import Contact, ImagePost, VideoPost, YoutubePost
+from django.contrib.auth.models import User
 
 
 class ContactForm(forms.ModelForm):
@@ -44,3 +45,11 @@ class YoutubePostForm(forms.ModelForm):
             'author': forms.TextInput(attrs={'placeholder': 'Author of Post'}),
         }
         fields = ['url', 'category', 'title', 'description', 'author', 'story']
+
+
+class FormUser(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']
