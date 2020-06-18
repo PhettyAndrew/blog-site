@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf23c666-ce29-46bd-a7e0-e2a8bc2b231d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/admin_register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/index_admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/admin_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/admin_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/admins.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/admins.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/base_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/base_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/contact_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/contact_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/text_post_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/text_post_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/video_post_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/video_post_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/youtube_post_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/admin/youtube_post_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/templates/appBlogd/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/templates/appBlogd/gallery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appBlogd/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/appBlogd/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appBlogd/templates/appBlogd/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="243" column="100" selection-start-line="243" selection-start-column="100" selection-end-line="243" selection-end-column="100" />
+            <state relative-caret-position="174">
+              <caret line="182" column="160" selection-start-line="182" selection-start-column="160" selection-end-line="182" selection-end-column="160" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#a#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -115,6 +98,7 @@
                 <element signature="n#style#0;n#i#0;n#a#2;n#span#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#0;n#a#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -298,7 +282,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -389,10 +373,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="676" y="0" width="697" height="735" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21875" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.4461305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -403,7 +386,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.31914893" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32392028" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -846,8 +829,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/appBlogd/templates/appBlogd/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="243" column="100" selection-start-line="243" selection-start-column="100" selection-end-line="243" selection-end-column="100" />
+        <state relative-caret-position="174">
+          <caret line="182" column="160" selection-start-line="182" selection-start-column="160" selection-end-line="182" selection-end-column="160" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#a#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -872,6 +855,7 @@
             <element signature="n#style#0;n#i#0;n#a#2;n#span#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#0;n#a#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
