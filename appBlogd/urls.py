@@ -5,7 +5,9 @@ app_name = 'appBlogd'
 
 urlpatterns = [
     # Index Page Url
-    path('', views.index, name='index'),
+    path('', views.loader, name='loader'),
+
+    path('index', views.index, name='index'),
 
     # Category Urls
     path('category-business', views.categoryBusiness, name='catBusiness'),

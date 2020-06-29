@@ -9,10 +9,15 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # Text Posts
+def loader(request):
+    return render(request, 'appBlogd/loader.html')
+
+
 def index(request):
     infoCarousel = ImagePost.objects.order_by('?')
     infoImage = ImagePost.objects.order_by('?')
-    infoVideo = VideoPost.objects.all
+    infoVideo = VideoPost.objects.filter(upload_category__contains="video")
+    infoAudio = VideoPost.objects.filter(upload_category__contains="audio")
     infoYoutube = YoutubePost.objects.all
     paginator = Paginator(infoImage, 6)
     page = request.GET.get('page', 1)
@@ -28,6 +33,7 @@ def index(request):
         'infoCarousel': infoCarousel,
         'posts': posts,
         'infoVideo': infoVideo,
+        'infoAudio': infoAudio,
         'infoYoutube': infoYoutube,
 
     }
@@ -38,8 +44,10 @@ def index(request):
 def categoryBusiness(request):
     infoImage = ImagePost.objects.filter(category__contains="business")
     imageCount = ImagePost.objects.filter(category__contains="business").count()
-    infoVideo = VideoPost.objects.filter(category__contains="business")
-    videoCount = VideoPost.objects.filter(category__contains="business").count()
+    infoVideo = VideoPost.objects.filter(category__contains="business", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="business", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="business", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="business", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="business")
     youtubeCount = YoutubePost.objects.filter(category__contains="business").count()
     context = {
@@ -47,16 +55,21 @@ def categoryBusiness(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
     return render(request, 'appBlogd/category.html', context)
 
+
 def categoryCar(request):
     infoImage = ImagePost.objects.filter(category__contains="cars")
     imageCount = ImagePost.objects.filter(category__contains="cars").count()
-    infoVideo = VideoPost.objects.filter(category__contains="cars")
-    videoCount = VideoPost.objects.filter(category__contains="cars").count()
+    infoVideo = VideoPost.objects.filter(category__contains="cars", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="cars", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="cars", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="cars", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="cars")
     youtubeCount = YoutubePost.objects.filter(category__contains="cars").count()
     context = {
@@ -64,6 +77,8 @@ def categoryCar(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -73,8 +88,10 @@ def categoryCar(request):
 def categoryCelebrity(request):
     infoImage = ImagePost.objects.filter(category__contains="celebrity")
     imageCount = ImagePost.objects.filter(category__contains="celebrity").count()
-    infoVideo = VideoPost.objects.filter(category__contains="celebrity")
-    videoCount = VideoPost.objects.filter(category__contains="celebrity").count()
+    infoVideo = VideoPost.objects.filter(category__contains="celebrity", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="celebrity", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="celebrity", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="celebrity", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="celebrity")
     youtubeCount = YoutubePost.objects.filter(category__contains="celebrity").count()
     context = {
@@ -82,6 +99,8 @@ def categoryCelebrity(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -91,8 +110,10 @@ def categoryCelebrity(request):
 def categoryHistory(request):
     infoImage = ImagePost.objects.filter(category__contains="history")
     imageCount = ImagePost.objects.filter(category__contains="history").count()
-    infoVideo = VideoPost.objects.filter(category__contains="history")
-    videoCount = VideoPost.objects.filter(category__contains="history").count()
+    infoVideo = VideoPost.objects.filter(category__contains="history", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="history", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="history", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="history", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="history")
     youtubeCount = YoutubePost.objects.filter(category__contains="history").count()
     context = {
@@ -100,6 +121,8 @@ def categoryHistory(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -109,8 +132,10 @@ def categoryHistory(request):
 def categoryLifestyle(request):
     infoImage = ImagePost.objects.filter(category__contains="lifestyle")
     imageCount = ImagePost.objects.filter(category__contains="lifestyle").count()
-    infoVideo = VideoPost.objects.filter(category__contains="lifestyle")
-    videoCount = VideoPost.objects.filter(category__contains="lifestyle").count()
+    infoVideo = VideoPost.objects.filter(category__contains="lifestyle", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="lifestyle", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="lifestyle", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="lifestyle", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="lifestyle")
     youtubeCount = YoutubePost.objects.filter(category__contains="lifestyle").count()
     context = {
@@ -118,6 +143,8 @@ def categoryLifestyle(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -127,8 +154,10 @@ def categoryLifestyle(request):
 def categoryMatatu(request):
     infoImage = ImagePost.objects.filter(category__contains="matatu culture")
     imageCount = ImagePost.objects.filter(category__contains="matatu culture").count()
-    infoVideo = VideoPost.objects.filter(category__contains="matatu culture")
-    videoCount = VideoPost.objects.filter(category__contains="matatu culture").count()
+    infoVideo = VideoPost.objects.filter(category__contains="matatu culture", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="matatu culture", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="matatu culture", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="matatu culture", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="matatu culture")
     youtubeCount = YoutubePost.objects.filter(category__contains="matatu culture").count()
     context = {
@@ -136,6 +165,8 @@ def categoryMatatu(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -145,8 +176,10 @@ def categoryMatatu(request):
 def categoryMemes(request):
     infoImage = ImagePost.objects.filter(category__contains="memes and vines")
     imageCount = ImagePost.objects.filter(category__contains="memes and vines").count()
-    infoVideo = VideoPost.objects.filter(category__contains="memes and vines")
-    videoCount = VideoPost.objects.filter(category__contains="memes and vines").count()
+    infoVideo = VideoPost.objects.filter(category__contains="memes and vines", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="memes and vines", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="memes and vines", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="memes and vines", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="memes and vines")
     youtubeCount = YoutubePost.objects.filter(category__contains="memes and vines").count()
     context = {
@@ -154,6 +187,8 @@ def categoryMemes(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -163,8 +198,10 @@ def categoryMemes(request):
 def categoryReviews(request):
     infoImage = ImagePost.objects.filter(category__contains="music and series review")
     imageCount = ImagePost.objects.filter(category__contains="music and series review").count()
-    infoVideo = VideoPost.objects.filter(category__contains="music and series review")
-    videoCount = VideoPost.objects.filter(category__contains="music and series review").count()
+    infoVideo = VideoPost.objects.filter(category__contains="music and series review", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="music and series review", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="music and series review", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="music and series review", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="music and series review")
     youtubeCount = YoutubePost.objects.filter(category__contains="music and series review").count()
     context = {
@@ -172,6 +209,8 @@ def categoryReviews(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -181,8 +220,10 @@ def categoryReviews(request):
 def categoryPolitics(request):
     infoImage = ImagePost.objects.filter(category__contains="politics")
     imageCount = ImagePost.objects.filter(category__contains="politics").count()
-    infoVideo = VideoPost.objects.filter(category__contains="politics")
-    videoCount = VideoPost.objects.filter(category__contains="politics").count()
+    infoVideo = VideoPost.objects.filter(category__contains="politics", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="politics", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="politics", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="politics", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="politics")
     youtubeCount = YoutubePost.objects.filter(category__contains="politics").count()
     context = {
@@ -190,6 +231,8 @@ def categoryPolitics(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -199,8 +242,10 @@ def categoryPolitics(request):
 def categorySports(request):
     infoImage = ImagePost.objects.filter(category__contains="sports")
     imageCount = ImagePost.objects.filter(category__contains="sports").count()
-    infoVideo = VideoPost.objects.filter(category__contains="sports")
-    videoCount = VideoPost.objects.filter(category__contains="sports").count()
+    infoVideo = VideoPost.objects.filter(category__contains="sports", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="sports", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="sports", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="sports", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="sports")
     youtubeCount = YoutubePost.objects.filter(category__contains="sports").count()
     context = {
@@ -208,6 +253,8 @@ def categorySports(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -217,8 +264,10 @@ def categorySports(request):
 def categoryTechnology(request):
     infoImage = ImagePost.objects.filter(category__contains="technology")
     imageCount = ImagePost.objects.filter(category__contains="technology").count()
-    infoVideo = VideoPost.objects.filter(category__contains="technology")
-    videoCount = VideoPost.objects.filter(category__contains="technology").count()
+    infoVideo = VideoPost.objects.filter(category__contains="technology", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="technology", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="technology", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="technology", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="technology")
     youtubeCount = YoutubePost.objects.filter(category__contains="technology").count()
     context = {
@@ -226,6 +275,8 @@ def categoryTechnology(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }
@@ -235,8 +286,10 @@ def categoryTechnology(request):
 def categoryYouths(request):
     infoImage = ImagePost.objects.filter(category__contains="youths corner")
     imageCount = ImagePost.objects.filter(category__contains="youths corner").count()
-    infoVideo = VideoPost.objects.filter(category__contains="youths corner")
-    videoCount = VideoPost.objects.filter(category__contains="youths corner").count()
+    infoVideo = VideoPost.objects.filter(category__contains="youths corner", upload_category__contains="video")
+    videoCount = VideoPost.objects.filter(category__contains="youths corner", upload_category__contains="video").count()
+    infoAudio = VideoPost.objects.filter(category__contains="youths corner", upload_category__contains="audio")
+    audioCount = VideoPost.objects.filter(category__contains="youths corner", upload_category__contains="audio").count()
     infoYoutube = YoutubePost.objects.filter(category__contains="youths corner")
     youtubeCount = YoutubePost.objects.filter(category__contains="youths corner").count()
     context = {
@@ -244,6 +297,8 @@ def categoryYouths(request):
         'imageCount': imageCount,
         'infoVideo': infoVideo,
         'videoCount': videoCount,
+        'infoAudio': infoAudio,
+        'audioCount': audioCount,
         'infoYoutube': infoYoutube,
         'youtubeCount': youtubeCount,
     }

@@ -42,9 +42,16 @@ class ImagePost(models.Model):
         return self.title
 
 
+upload_post = (
+    ('Video', 'video'),
+    ('Audio', 'audio'),
+)
+
+
 # Video Table
 class VideoPost(models.Model):
-    video = models.FileField()
+    upload = models.FileField()
+    upload_category = models.CharField(choices=upload_post, default='unknown', max_length=50)
     category = models.CharField(choices=category, default='unknown', max_length=100)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)

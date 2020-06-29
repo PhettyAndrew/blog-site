@@ -1,5 +1,5 @@
 {% extends 'appBlogd/admin/base_admin.html' %}
-{% block title %}Blog-Site: Admin{% endblock %}
+{% block title %}Daily Storo: Admin{% endblock %}
 {% block content %}
 <div class="alert" role="alert" style="width: 100%;">
     <div class="row">
@@ -7,7 +7,7 @@
             <h4 class="alert-heading" style="font-family: BenchNine;">Video Posts Table</h4>
         </div>
         <div class="col-sm-6" style="text-align: right;">
-            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="{% url 'appBlogd:video_post_form' %}">Upload a New Video</a>
+            <a class="btn btn-primary" style="display: inline-block; font-family: Jura;" href="{% url 'appBlogd:video_post_form' %}">Upload a New Media Post</a>
         </div>
     </div>
 </div>
@@ -17,7 +17,8 @@
           <thead>
             <tr>
               <th>Id</th>
-              <th>Video</th>
+              <th>Upload</th>
+              <th>Upload Category</th>
               <th>Title</th>
               <th>Description</th>
               <th>Author</th>
@@ -30,10 +31,17 @@
             <tr>
               <td>{{post.id}}</td>
               <td>
+                {% if post.upload_category == "video" %}
                 <video style="max-width: 50%; height: 40px;" controls>
-                    <source src="{{post.video.url}}" type="video/mp4">
+                    <source src="{{post.upload.url}}" type="video/mp4">
                 </video>
+                {% else %}
+                <audio style="max-width: 50%; height: 40px;" controls>
+                    <source src="{{post.upload.url}}" >
+                </audio>
+                {% endif %}
               </td>
+              <td>{{post.upload_category}}</td>
               <td>{{post.title}}</td>
               <td>{{post.description}}</td>
               <td>{{post.author}}</td>

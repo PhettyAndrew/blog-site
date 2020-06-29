@@ -32,7 +32,7 @@ class VideoPostForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'placeholder': 'A brief description of Post'}),
             'author': forms.TextInput(attrs={'placeholder': 'Author of Post'}),
         }
-        fields = ['video', 'category', 'title', 'description', 'author', 'story']
+        fields = ['upload', 'upload_category', 'category', 'title', 'description', 'author', 'story']
 
 
 class YoutubePostForm(forms.ModelForm):
