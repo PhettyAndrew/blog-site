@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 # Create your views here.
@@ -14,7 +15,6 @@ def loader(request):
 
 
 def index(request):
-    infoCarousel = ImagePost.objects.order_by('?')
     infoImage = ImagePost.objects.order_by('?')
     infoVideo = VideoPost.objects.filter(upload_category__contains="video")
     infoAudio = VideoPost.objects.filter(upload_category__contains="audio")
@@ -30,7 +30,6 @@ def index(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     context = {
-        'infoCarousel': infoCarousel,
         'posts': posts,
         'infoVideo': infoVideo,
         'infoAudio': infoAudio,
@@ -577,3 +576,21 @@ def logout_admin(request):
 # Index Admin
 def index_admin(request):
     return render(request, 'appBlogd/admin/index_admin.html')
+
+
+def search(request):
+    template = 'appBlogd/index.html'
+    query = request.GET.get('q')
+    resultImage = ImagePost.objects.filter(Q(title__icontains=query) | Q(category__icontains=query))
+    resultVideo = VideoPost.objects.filter(Q(title__icontains=query) | Q(category__icontains=query), upload_category__contains="video")
+    resultAudio = VideoPost.objects.filter(Q(title__icontains=query) | Q(category__icontains=query), upload_category__contains="audio")
+    resultYoutube = YoutubePost.objects.filter(Q(title__icontains=query) | Q(category__icontains=query))
+    message = "🔍 This is all we could find ................. 👇🏾"
+    context = {
+        'posts': resultImage,
+        'infoVideo': resultVideo,
+        'infoAudio': resultAudio,
+        'infoYoutube': resultYoutube,
+        'message': message,
+    }
+    return render(request, template, context)

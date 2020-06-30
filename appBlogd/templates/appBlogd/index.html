@@ -1,6 +1,37 @@
 {% extends 'appBlogd/base.html' %}
 {% block title %}Daily Storo: Home{% endblock %}
+{% block search %}
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="row shadow rounded-pill" style="padding: 50px;">
+        <div class="col-sm-12">
+            <form method="get" action="{% url 'appBlogd:search' %}">
+                <div class="input-group md-form form-sm form-2 pl-0">
+                  <input name="q" value="{{request.GET.q}}" class="form-control my-0 py-1 lime-border rounded-pill" type="text" style="height: 50px;" placeholder="Search for Posts according to Title or Category" aria-label="Search">
+                  <button type="submit" class="btn btn-outline-warning rounded-circle">
+                      <i class="fas fa-search"></i>
+                  </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
 {% block pane %}
+{% if infoImage or infoVideo or infoYoutube or infoAudio %}
+    {% if message %}
+    <div class="row">
+        <div class="alert alert-warning" role="alert" style="width: 100%">
+            <h4 style="Font-family: Jura;">{{message}}</h4>
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+    <div class="row">
+        <div class="alert alert-warning" role="alert" style="width: 100%">
+            <h4 style="Font-family: Jura;">🔍 We found nothing related to your Search.</h4>
+        </div>
+    </div>
+{% endif %}
 <div class="row">
     <div class="alert" role="alert" style="width: 100%;">
       <h4 class="alert-heading" style="font-family: BenchNine;">Text Posts</h4><hr>
