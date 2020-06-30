@@ -594,3 +594,8 @@ def search(request):
         'message': message,
     }
     return render(request, template, context)
+
+
+def error_404(request, exception):
+    data = {}
+    return render(request, 'appBlogd/404.html', data)

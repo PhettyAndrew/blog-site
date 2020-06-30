@@ -3,6 +3,8 @@ from . import views
 
 app_name = 'appBlogd'
 
+handler404 = 'appBlogd.views.error_404'
+
 urlpatterns = [
     # Index Page Url
     path('', views.loader, name='loader'),
