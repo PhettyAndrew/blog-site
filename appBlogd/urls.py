@@ -102,5 +102,5 @@ urlpatterns = [
     path('index-admin', views.index_admin, name='index_admin'),
 
     # Search
-    path('results/$', views.search, name="search"),
+    path('results/', views.search, name="search"),
 ]
