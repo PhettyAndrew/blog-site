@@ -31,7 +31,7 @@ SECRET_KEY = os.environ['DS_SK']
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '127.0.0.1'
+    'dailystoro.com'
 ]
 
 
